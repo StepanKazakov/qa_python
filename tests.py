@@ -65,10 +65,14 @@ class TestBooksCollector:
         assert len(children_books) == 1                     # books for children - 1
         assert 'Metro 2033' not in children_books           # horror not for children
 
-    def test_add_book_in_favorites_check_and_remove(self, collector):
+    def test_add_book_in_favorites_add_one_book_successful(self, collector):
         collector.add_new_book('Metro 2035')
         collector.add_book_in_favorites('Metro 2035')
         assert 'Metro 2035' in collector.get_list_of_favorites_books()
+
+    def test_delete_book_from_favorites_remove_book_successfully(self, collector):
+        collector.add_new_book('Metro 2035')
+        collector.add_book_in_favorites('Metro 2035')
         collector.delete_book_from_favorites('Metro 2035')
         assert 'Metro 2035' not in collector.get_list_of_favorites_books()
 
